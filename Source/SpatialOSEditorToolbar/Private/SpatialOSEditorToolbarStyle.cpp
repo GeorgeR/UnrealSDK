@@ -45,7 +45,7 @@ TSharedRef<FSlateStyleSet> FSpatialOSEditorToolbarStyle::Create()
 {
   TSharedRef<FSlateStyleSet> Style =
       MakeShareable(new FSlateStyleSet("SpatialOSEditorToolbarStyle"));
-  Style->SetContentRoot(IPluginManager::Get().FindPlugin("SpatialOSEditorToolbar")->GetBaseDir() /
+  Style->SetContentRoot(IPluginManager::Get().FindPlugin("SpatialOS")->GetBaseDir() /
                         TEXT("Resources"));
 
   Style->Set("SpatialOSEditorToolbar.StartSpatialOSStackAction",

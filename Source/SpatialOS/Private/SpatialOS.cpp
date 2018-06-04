@@ -2,6 +2,7 @@
 
 #include "SpatialOS.h"
 
+#include "Engine/Engine.h"
 #include "CallbackDispatcher.h"
 #include "EntityPipeline.h"
 #include "SpatialOSSettings.h"
@@ -32,6 +33,7 @@ void USpatialOS::ApplyConfiguration(const FSOSWorkerConfigurationData& InWorkerC
 
 void USpatialOS::ApplyEditorWorkerConfiguration(FWorldContext& InWorldContext)
 {
+#if WITH_EDITOR
   checkf(!IsConnected(), TEXT("ApplyConfiguration was called after Connect was called."));
 
   // This WorldContext does not represent a PIE instance
@@ -52,6 +54,7 @@ void USpatialOS::ApplyEditorWorkerConfiguration(FWorldContext& InWorldContext)
     return;
   }
 
+
   // InWorldContext.PIEInstance is 0 if one PIE instance is run otherwise [1, ..., n] if n PIE
   // instances are run. See Engine\Source\Editor\UnrealEd\Private\PlayLevel.cpp, line 2528.
   const int32 EditorConfigurationArrayIndex = FMath::Max(0, InWorldContext.PIEInstance - 1);
@@ -69,6 +72,7 @@ void USpatialOS::ApplyEditorWorkerConfiguration(FWorldContext& InWorldContext)
       InWorldContext.GameViewport->bDisableWorldRendering = WorkerConfig.bDisableRendering;
     }
   }
+#endif
 }
 
 bool USpatialOS::IsConnected() const

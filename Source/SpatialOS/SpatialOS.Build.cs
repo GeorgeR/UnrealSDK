@@ -45,15 +45,28 @@ public class SpatialOS : ModuleRules
         var CoreSdkLibraryDir = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "Binaries", "ThirdParty", "Improbable", Target.Platform.ToString()));
         string CoreSdkShared;
 
+        if (!Directory.Exists(CoreSdkLibraryDir))
+            throw new DirectoryNotFoundException(CoreSdkLibraryDir);
+
         if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {
             CoreSdkShared = Path.Combine(CoreSdkLibraryDir, "CoreSdkDll.dll");
-            PublicAdditionalLibraries.AddRange(new[] { Path.Combine(CoreSdkLibraryDir, "CoreSdkDll.lib") });
+            var lib = Path.Combine(CoreSdkLibraryDir, "CoreSdkDll.lib");
+            PublicAdditionalLibraries.AddRange(new[] { lib });
+
+            if (!File.Exists(CoreSdkShared))
+                throw new FileNotFoundException(CoreSdkShared);
+
+            if(!File.Exists(lib))
+                throw new FileNotFoundException(lib);
         }
         else
         {
             CoreSdkShared = Path.Combine(CoreSdkLibraryDir, "libCoreSdkDll.so");
             PublicAdditionalLibraries.AddRange(new[] { CoreSdkShared });
+
+            if(!File.Exists(CoreSdkShared))
+                throw new FileNotFoundException(CoreSdkShared);
         }
 
         RuntimeDependencies.Add(CoreSdkShared, StagedFileType.NonUFS);
