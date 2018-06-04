@@ -58,8 +58,8 @@
           "description": "Generates Unreal UActorComponentss from the project schema.",
           "command": "Game/Plugins/SpatialOS/Binaries/ThirdParty/Improbable/Programs/UnrealCodeGenerator.exe",
           "arguments": [
-            "--json-dir=Game/Intermediate/Improbable/json",
-            "--output-dir=Game/Source/SpatialOS/Public/Generated/UClasses"
+            "--json-dir=Game/Plugins/SpatialOS/Intermediate/Improbable/json",
+            "--output-dir=Game/Plugins/SpatialOS/Source/SpatialOS/Public/Generated/UClasses"
           ]
         }
       ]

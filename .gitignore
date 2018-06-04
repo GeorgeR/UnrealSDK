@@ -74,4 +74,5 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
+!Binaries/ThirdParty**
 **/Generated/**
