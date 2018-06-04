@@ -62,6 +62,6 @@ public class SpatialOS : ModuleRules
         PublicDelayLoadDLLs.Add("CoreSdkDll.dll");
 
         // Point generated code to the correct API spec.
-        Definitions.Add("IMPROBABLE_DLL_API=SPATIALOS_API");
+        PublicDefinitions.Add("IMPROBABLE_DLL_API=SPATIALOS_API");
     }
 }
