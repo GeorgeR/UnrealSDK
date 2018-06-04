@@ -74,6 +74,17 @@
             "Codegen"
           ]
         },
+		{
+          "name": "Win64 Client",
+          "target": "Cloud",
+          "command": "Game/Plugins/SpatialOS/Binaries/ThirdParty/Improbable/Programs/unreal_packager",
+          "arguments": [
+            "build",
+            "--target=",
+            "--configuration=Development",
+            "--platform=Win64"
+          ]
+        },
         {
           "name": "Win64 Editor (Local)",
           "target": "Local",
@@ -92,17 +103,6 @@
           "arguments": [
             "build",
             "--target=Editor",
-            "--configuration=Development",
-            "--platform=Win64"
-          ]
-        },
-        {
-          "name": "Win64 Client",
-          "target": "Cloud",
-          "command": "Game/Plugins/SpatialOS/Binaries/ThirdParty/Improbable/Programs/unreal_packager",
-          "arguments": [
-            "build",
-            "--target=",
             "--configuration=Development",
             "--platform=Win64"
           ]
